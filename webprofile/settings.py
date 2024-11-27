@@ -40,7 +40,7 @@ CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
 SECRET_KEY = 'django-insecure-kkj32=w7*&-9t0bmq%427dfp*8va6^8r$k84z6npth*p4ga00q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
