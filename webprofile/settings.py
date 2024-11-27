@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,6 +20,13 @@ STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# Cloudinary credentials
+CLOUDINARY_CLOUD_NAME = config("CLOUDINARY_CLOUD_NAME")
+CLOUDINARY_API_KEY = config("CLOUDINARY_API_KEY")
+CLOUDINARY_API_SECRET = config("CLOUDINARY_API_SECRET")
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,7 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +89,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webprofile.wsgi.application'
 ALLOWED_HOSTS = ['web-production-8320.up.railway.app']
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY = {
+    'cloud_name': CLOUDINARY_CLOUD_NAME,
+    'api_key': CLOUDINARY_API_KEY,
+    'api_secret': CLOUDINARY_API_SECRET,
+}
 
 
 # Database
