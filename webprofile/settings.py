@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-8320.up.railway.app',
+    'http://localhost',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
