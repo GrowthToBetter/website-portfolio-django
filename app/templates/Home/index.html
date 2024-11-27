@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/website.css' %}?v=2.0" />
+    <script
+      src="https://kit.fontawesome.com/eab6206c98.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- navbar -->
+      <nav class="navbar">
+        <h1 class="navbar-logo">My<span>W</span>ebsite.</h1>
+        <div class="navbar-nav">
+          <a href="/"><i data-feather="home"></i> Home |</a>
+          <a href="#About"><i data-feather="alert-circle"></i> About |</a>
+          <a href="#" target="_self" id="Contact"
+            ><i data-feather="phone"></i> Contact |</a
+          >
+          <a
+            href="https://mail.google.com/mail/u/0/#inbox?compose=XBcJlFTQXKSgHnWDqXPqxQgmRgFhmbtZtNRBrphNTlDXlpqWxHwbnqTNkmJcKjGvCHqKZWfMWkmCxwVl"
+            target="_blank"
+            ><i data-feather="send"></i> Services |</a
+          >
+        </div>
+        <div id="hamburger-menu">
+          <a href="#"><i data-feather="menu"></i></a>
+        </div>
+      </nav>
+      <div class="context">
+        <ul>
+          <li id="Instagram">
+            <a href="https://www.instagram.com/jean_richnerd" target="_blank"
+              >Instagram </a
+            ><i data-feather="instagram"></i>
+          </li>
+          <li id="Github">
+            <a href="https://github.com/growthtobetter" target="_blank"
+              >Github </a
+            ><i data-feather="github"></i>
+          </li>
+          <li id="Facebook">
+            <a href="https://www.Facebook.com/Rantabara" target="_blank"
+              >Facebook <i data-feather="facebook"></i
+            ></a>
+          </li>
+          <li id="TikTok">
+            <a href="https://www.tiktok.com/@growthtobetter" target="_blank"
+              >TikTok </a
+            ><i class="fa-brands fa-tiktok"></i>
+          </li>
+          <li id="LinkInd">
+            <a
+              href="https://www.linkedin.com/in/rantabara-trahjaga-1b17ba233?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
+              target="_blank"
+              >LinkedIn </a
+            ><i class="fa fa-linkedin"></i>
+          </li>
+        </ul>
+      </div>
+      <!-- hero section -->
+      <section
+        class="hero"
+        style="
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.6),
+              rgba(0, 0, 0, 0.9)
+            ),
+            url('{% static 'images/bg.jpg' %}');
+        "
+        id="Home"
+      >
+        <main class="content">
+          <div
+            class="photo"
+            style="background-image: url('{% static 'images/profil.jpg' %}')"
+          ></div>
+          <p>Jean Richnerd Rantabaratrahjaga</p>
+          <br />
+          <h1>
+            SOFFWARE ENGINEER <span><i data-feather="code"></i></span>
+          </h1>
+          <h3>2024 SMK <span>T</span>elkom Malang Student</h3>
+        </main>
+      </section>
+      <!-- about -->
+      <section class="About" id="About">
+        <div class="content-2">
+          <h1><span></span>About Me | <i data-feather="alert-circle"></i></h1>
+          <div class="wrapContent">
+            <div class="Text-1">
+              <div class="bag1">
+                <h1>Fullstack dev with NextJs</h1>
+              </div>
+              <p id="Javascript">TypeScript</p>
+              <div class="bag2">
+                <h3 id="HTML">ReactJs</h3>
+                <h3 id="CSS">NodeJs</h3>
+              </div>
+            </div>
+            <div class="Text-2">
+              <p>
+                I'm Jean. I've been passionate about programming since the first
+                grade of junior high school. My journey began with Python, which
+                sparked my curiosity about programming languages. Recently, I’ve
+                been diving into web technologies like HTML, CSS, and JavaScript
+                to support my goals as a software engineer.
+              </p>
+              <br />
+              <p>
+                In the past, I tried HTML and CSS but thought design wasn't my
+                strong suit. I decided to shift my focus to mobile development
+                with Python and exploring the potential of AI. However, I’ve
+                come to appreciate the importance of design and started learning
+                it again. Along the way, I've also developed skills in
+                TypeScript, Node.js, React.js, MySQL, Firebase, PostgreSQL,
+                Prisma, and Next.js, all of which have significantly enriched my
+                toolkit and brought me closer to my aspirations as a software
+                engineer.
+              </p>
+            </div>
+          </div>
+          <div class="ag-format-container">
+            <div class="ag-courses_box">
+              {% for project in projects %}
+              <div class="ag-courses_item" style="background-image: url('{{ project.image.url }}');"> 
+                <a href="{{project.url}}" target="_blank" class="ag-courses-item_link">
+                  <div class="ag-courses-item_bg"></div>
+
+                  <div class="ag-courses-item_title">
+                    {{project.title}}
+                    <br>
+                  </div>
+                  
+                  <div class="ag-courses-item_date-box">
+                    End:
+                    <span class="ag-courses-item_date"> {{project.date}} </span>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="wrapContent-2">
+            <div class="Text-1">
+              <p>BASIC</p>
+              <div class="bag1">
+                <h2>Python Development</h2>
+                <ul>
+                  <li>FrameWork kivy And KivyMD</li>
+                  <li>Pygame</li>
+                </ul>
+              </div>
+              <h2>About Python Skill</h2>
+              <p>
+                i've try python to teach my skill of problem solving, the simple
+                code they have make me more easier to leran it, its just my hoby
+                to learn more about GUI in python because usually people use
+                python to make Ai or manage BackEnd, but its about how learn it
+                feel so fun, so i keep it a hoby for a years, even though i
+                doesnt finish my GUI with python yet, yeah back again, its just
+                a hobby
+              </p>
+            </div>
+            <div class="doc">
+              <img src="{% static 'images/code.png' %}" alt="" />
+              <img src="{% static 'images/code2.png' %}" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+      <footer class="footer">
+        <p>CopyRight&#169; By Jean Richnerd Rantabaratrahjaga</p>
+      </footer>
+      {{ insert_me }}
+    </div>
+
+    <!-- icon -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- script -->
+    <script src="{% static 'js/website.js'%}?v=2.0"></script>
+  </body>
+</html>
