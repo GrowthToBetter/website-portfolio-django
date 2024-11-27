@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
+from dotenv import load_dotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +23,13 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-# Cloudinary credentials
-CLOUDINARY_CLOUD_NAME = config("CLOUDINARY_CLOUD_NAME")
-CLOUDINARY_API_KEY = config("CLOUDINARY_API_KEY")
-CLOUDINARY_API_SECRET = config("CLOUDINARY_API_SECRET")
+# Load .env file
+load_dotenv()
+
+# Cloudinary Configuration
+CLOUDINARY_CLOUD_NAME = os.getenv("CLOUDINARY_CLOUD_NAME")
+CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
+CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
 
 
 
@@ -36,7 +40,7 @@ CLOUDINARY_API_SECRET = config("CLOUDINARY_API_SECRET")
 SECRET_KEY = 'django-insecure-kkj32=w7*&-9t0bmq%427dfp*8va6^8r$k84z6npth*p4ga00q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -88,7 +92,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webprofile.wsgi.application'
-ALLOWED_HOSTS = ['web-production-8320.up.railway.app']
+ALLOWED_HOSTS = ['web-production-8320.up.railway.app','localhost']
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY = {
     'cloud_name': CLOUDINARY_CLOUD_NAME,
